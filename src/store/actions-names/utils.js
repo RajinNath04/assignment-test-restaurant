@@ -1,0 +1,4 @@
+export const UTILS_ACTIONS = {
+    UPDATEDATA: 'UTILS_DATA',
+    CLEAR_ALL: 'CLEAR_ALL',
+};

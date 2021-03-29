@@ -1,0 +1,21 @@
+@import '../../assets/scss/variables';
+
+#login-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+
+
+}
+
+.ant-list {
+  padding: 20px !important;
+}
+.ant-list-split .ant-list-item {
+  border-bottom: 1px solid #f0f0f0 !important;
+}
+
+.error-color {
+  color: red;
+  margin-left: 20px;
+}
