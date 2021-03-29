@@ -16,13 +16,33 @@ import FilterSearchRestaurant from '../../components/FilterSearchRestaurant/Filt
 class Login extends Component {
 
     state = {
-        visible: false
+        visible: false,
+        getAllRestaurants: [],
+        getRestaurantSearch: []
+    }
+
+    static getDerivedStateFromProps(props, state) {
+
+        if (props.getAllRestaurants.length > 0) {
+            console.log('inside this');
+            return {
+                getAllRestaurants: props.getAllRestaurants
+            }
+        }
+        else return state
+
+        // if (props.getAllRestaurants.length !== 0)
+        //     return {
+        //         getAllRestaurants: props.getAllRestaurants
+        //     }
+        // return state
     }
 
     componentDidMount() {
 
         this.props.ActionGetAllRestaurants()
     }
+
 
     handleSubmit = (params, actions) => {
         const param = {
@@ -52,7 +72,8 @@ class Login extends Component {
     render() {
         const { visible } = this.state
         const { isLoading, getAllRestaurants, getRestaurantSearch } = this.props
-
+        const { } = this.state
+        console.log(this.state.getAllRestaurants);
         return (
             <div className="headerSection" style={{ overflowX: 'hidden' }}>
                 {/* Navbar */}
@@ -66,7 +87,7 @@ class Login extends Component {
 
                         <List
                             itemLayout="horizontal"
-                            dataSource={visible == true ? getRestaurantSearch : [getAllRestaurants]}
+                            dataSource={visible == true ? getRestaurantSearch : getAllRestaurants}
                             renderItem={item => (
                                 <List.Item onClick={() => this.props.ActionRouteNavigate(ROUTES.RESTAURANT, { data: item })}>
 
@@ -101,6 +122,7 @@ class Login extends Component {
                                 </List.Item>
                             )}
                         />
+
                     </div>
 
                 </Spin>
@@ -110,6 +132,7 @@ class Login extends Component {
 
 
 function mapStateToProps({ rLoading, rUtils }) {
+
     return {
         getAllRestaurants: rUtils.getAllRestaurants || [],
         getRestaurantSearch: rUtils.getRestaurantSearch || [],

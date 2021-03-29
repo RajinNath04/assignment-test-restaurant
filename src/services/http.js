@@ -117,7 +117,7 @@ class http {
 
 class response {
     static parse(res, type = 'json') {
-        ResponseManager.receive(res);
+        // ResponseManager.receive(res);
         switch (type) {
             case 'json':
                 return res.json();

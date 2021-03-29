@@ -33,7 +33,8 @@ export function ActionGetAllRestaurants() {
     dispatch(ActionLoadingUpdate("getAllRestaurants", true));
     UtilsData.getAllRestaurants()
       .then((res) => {
-        dispatch(ActionUtilsData("getAllRestaurants", res.result));
+
+        dispatch(ActionUtilsData("getAllRestaurants", [res.result]));
       })
       .catch((err) => console.log(err))
       .finally(() => dispatch(ActionLoadingUpdate("getAllRestaurants", false)));
